@@ -35,6 +35,7 @@ public class GameController {
 			this.prepareCar();
 		}
 		List<String> carNameList = carNameToList(carName);
+		carManager.generateCarList(carNameList);
 	}
 
 	public void run() {
