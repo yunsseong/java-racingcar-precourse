@@ -16,7 +16,7 @@ public class Message {
 
 	public Boolean lengthOver(String string){
 		return Arrays.stream(nameSeparate(string))
-			.allMatch(s -> s.length() > 5);
+			.anyMatch(s -> s.length() > 5);
 	}
 
 	public void validateCarName(String userInput) throws IllegalArgumentException{
