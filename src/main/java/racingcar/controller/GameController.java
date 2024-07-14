@@ -17,24 +17,23 @@ public class GameController {
 		this.message = message;
 	}
 
-	public String getCarName() {
-		String carName = "";
-		do {
-			try {
-				carName = message.scan();
-			} catch (Exception e) {
-				System.out.println(e.getMessage());
-			}
-		} while (!message.validateCarName(carName));
-		return carName;
+	public String getCarName(){
+		System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
+		return message.scan();
 	}
 
-	public List<String> carNameToList(String carName){
+	public List<String> carNameToList(String carName) {
 		return Arrays.asList(carName.split(","));
 	}
 
 	public void init() {
 		String carName = getCarName();
+		try {
+			message.validateCarName(carName);
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			this.init();
+		}
 		List<String> carNameList = carNameToList(carName);
 	}
 
