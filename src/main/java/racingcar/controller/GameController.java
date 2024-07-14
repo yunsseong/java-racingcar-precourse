@@ -31,7 +31,7 @@ public class GameController {
 		try {
 			message.validateCarName(carName);
 		} catch (Exception e) {
-			System.out.println(e.getMessage());
+			System.out.println("[ERROR] " + e.getMessage());
 			this.init();
 		}
 		List<String> carNameList = carNameToList(carName);
