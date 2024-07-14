@@ -19,7 +19,7 @@ public class Message {
 			.allMatch(s -> s.length() > 5);
 	}
 
-	public boolean validateCarName(String userInput){
+	public void validateCarName(String userInput) throws IllegalArgumentException{
 		if(userInput.isEmpty())
 			throw new IllegalArgumentException("자동차 이름을 입력해주세요");
 		if(lengthOver(userInput))
