@@ -26,13 +26,13 @@ public class GameController {
 		return Arrays.asList(carName.split(","));
 	}
 
-	public void init() {
+	public void prepareCar() {
 		String carName = getCarName();
 		try {
 			message.validateCarName(carName);
 		} catch (Exception e) {
 			System.out.println("[ERROR] " + e.getMessage());
-			this.init();
+			this.prepareCar();
 		}
 		List<String> carNameList = carNameToList(carName);
 	}
