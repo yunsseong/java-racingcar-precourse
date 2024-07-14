@@ -14,15 +14,15 @@ public class Message {
 		return userInput.split(",");
 	}
 
-	public Boolean lengthCheck(String string){
+	public Boolean lengthOver(String string){
 		return Arrays.stream(nameSeparate(string))
-			.allMatch(s -> s.length() <= 5);
+			.allMatch(s -> s.length() > 5);
 	}
 
 	public boolean validateCarName(String userInput){
 		if(userInput.isEmpty())
 			throw new IllegalArgumentException("자동차 이름을 입력해주세요");
-		if(lengthCheck(userInput))
+		if(lengthOver(userInput))
 			throw new IllegalArgumentException("자동차 이름을 5글자 이하로 입력해주세요");
 		return true;
 	}
