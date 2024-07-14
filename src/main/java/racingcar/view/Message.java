@@ -24,6 +24,5 @@ public class Message {
 			throw new IllegalArgumentException("자동차 이름을 입력해주세요");
 		if(lengthOver(userInput))
 			throw new IllegalArgumentException("자동차 이름을 5글자 이하로 입력해주세요");
-		return true;
 	}
 }
