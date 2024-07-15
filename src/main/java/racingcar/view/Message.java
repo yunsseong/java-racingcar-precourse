@@ -5,16 +5,19 @@ import java.util.List;
 import java.util.regex.Pattern;
 
 import camp.nextstep.edu.missionutils.Console;
+import racingcar.model.Car;
 
 public class Message {
 	private static final Pattern digitPattern = Pattern.compile("^[1-9]*$");
 	public String scan() {
-		return Console.readLine();
+		return removeSpace(Console.readLine());
 	}
 
 	public String[] commaSeparate(String string) {
 		return string.split(",");
 	}
+
+	public String removeSpace(String string){return string.replaceAll(" ", "");}
 
 	public boolean lengthOver(String string) {
 		return Arrays.stream(commaSeparate(string))
@@ -40,5 +43,31 @@ public class Message {
 			throw new IllegalArgumentException("시도 횟수를 꼭 입력해야해요");
 		if(!userInput.matches(digitPattern.pattern()))
 			throw new IllegalArgumentException("시도 횟수로 숫자를 입력해주세요");
+	}
+
+	public void printDash(int count){
+		for(int i = 0; i < count; i++){
+			System.out.print("-");
+		}
+		System.out.println();
+	}
+
+	public void printRoundResult(List<Car> carList){
+		carList
+			.forEach(c -> {
+				System.out.print(c.getName() + " : ");
+				printDash(c.getPosition());
+			});
+	}
+
+	public void printWinner(List<Car> winnerList){
+		StringBuilder winner = new StringBuilder();
+		for(int i = 0; i < winnerList.size(); i++){
+			if(i == winnerList.size() - 1)
+				winner.append(winnerList.get(i).getName());
+			else
+				winner.append(winnerList.get(i).getName()).append(", ");
+		}
+		System.out.println(winner);
 	}
 }
