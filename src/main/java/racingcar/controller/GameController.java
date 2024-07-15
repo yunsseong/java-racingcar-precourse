@@ -3,16 +3,16 @@ package racingcar.controller;
 import java.util.Arrays;
 import java.util.List;
 
-import racingcar.model.CarManager;
+import racingcar.model.CarRacing;
 import racingcar.view.Message;
 
 public class GameController {
-	private final CarManager carManager;
+	private final CarRacing carRacing;
 	private final Message message;
 	private int trialNum;
 
-	public GameController(CarManager carManager, Message message) {
-		this.carManager = carManager;
+	public GameController(CarRacing carRacing, Message message) {
+		this.carRacing = carRacing;
 		this.message = message;
 	}
 
@@ -34,7 +34,7 @@ public class GameController {
 			this.prepareCar();
 		}
 		List<String> carNameList = carNameToList(carName);
-		carManager.generateCarList(carNameList);
+		carRacing.generateCarList(carNameList);
 	}
 
 	private String getTrialNum() {
