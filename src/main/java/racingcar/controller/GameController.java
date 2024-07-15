@@ -59,6 +59,14 @@ public class GameController {
 	}
 
 	public void run() {
+		System.out.println("실행 결과");
+		for(int i = 0; i < trialNum; i++){
+			carRacing.forwardCar();
+			message.printRoundResult(carRacing.getCarList());
+			System.out.println();
+		}
+		System.out.print("최종 우승자 : ");
+		message.printWinner(carRacing.getWinnerList());
 	}
 
 }
