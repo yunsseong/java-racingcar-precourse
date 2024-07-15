@@ -1,6 +1,7 @@
 package racingcar.view;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.regex.Pattern;
 
 import camp.nextstep.edu.missionutils.Console;
@@ -20,13 +21,18 @@ public class Message {
 			.anyMatch(s -> s.length() > 5);
 	}
 
-	public void validateCarName(String userInput) throws IllegalArgumentException{
-		if(userInput.isEmpty())
-	public void validateCarName(String userInput) throws IllegalArgumentException {
-		if (userInput.isEmpty())
+	public boolean duplicateCheck(String string){
+		List<String> stringList = Arrays.asList(commaSeparate(string));
+		return stringList.stream().distinct().count() != stringList.size();
+	}
+
+	public void validateCarName(String string) throws IllegalArgumentException {
+		if (string.isEmpty())
 			throw new IllegalArgumentException("자동차 이름을 입력해주세요");
-		if (lengthOver(userInput))
+		if (lengthOver(string))
 			throw new IllegalArgumentException("자동차 이름을 5글자 이하로 입력해주세요");
+		if (duplicateCheck(string))
+			throw new IllegalArgumentException("자동차 이름을 겹치지 않게 입력해주세요");
 	}
 
 	public void validateTrialNum(String userInput) throws IllegalArgumentException{
