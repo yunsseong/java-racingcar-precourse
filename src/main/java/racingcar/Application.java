@@ -9,7 +9,7 @@ public class Application {
     private static GameController gameController;
     public static void main(String[] args) {
         GameController gameController = new GameController(new CarManager(), new Message());
-        gameController.prepareCar();
+        gameController.init();
         gameController.run();
     }
 }
