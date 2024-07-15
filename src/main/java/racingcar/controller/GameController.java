@@ -1,23 +1,22 @@
 package racingcar.controller;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import racingcar.model.Car;
 import racingcar.model.CarManager;
 import racingcar.view.Message;
 
 public class GameController {
 	private final CarManager carManager;
 	private final Message message;
+	private int trialNum;
 
 	public GameController(CarManager carManager, Message message) {
 		this.carManager = carManager;
 		this.message = message;
 	}
 
-	public String getCarName(){
+	public String getCarName() {
 		System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
 		return message.scan();
 	}
@@ -36,6 +35,27 @@ public class GameController {
 		}
 		List<String> carNameList = carNameToList(carName);
 		carManager.generateCarList(carNameList);
+	}
+
+	private String getTrialNum() {
+		System.out.println("시도할 횟수는 몇회인가요?");
+		return message.scan();
+	}
+
+	public int prepareTrialNum() {
+		String trialNum = getTrialNum();
+		try {
+			message.validateTrialNum(trialNum);
+		} catch (Exception e) {
+			System.out.println("[ERROR]" + e.getMessage());
+			this.prepareTrialNum();
+		}
+		return Integer.parseInt(trialNum);
+	}
+
+	public void init() {
+		prepareCar();
+		trialNum = prepareTrialNum();
 	}
 
 	public void run() {
