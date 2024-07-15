@@ -1,7 +1,6 @@
 package racingcar.view;
 
 import java.util.Arrays;
-import java.util.List;
 import java.util.regex.Pattern;
 
 import camp.nextstep.edu.missionutils.Console;
@@ -12,12 +11,12 @@ public class Message {
 		return Console.readLine();
 	}
 
-	public String[] nameSeparate(String userInput) {
-		return userInput.split(",");
+	public String[] commaSeparate(String string) {
+		return string.split(",");
 	}
 
 	public boolean lengthOver(String string) {
-		return Arrays.stream(nameSeparate(string))
+		return Arrays.stream(commaSeparate(string))
 			.anyMatch(s -> s.length() > 5);
 	}
 
