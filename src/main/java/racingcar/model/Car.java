@@ -15,11 +15,11 @@ public class Car {
 			position++;
 	}
 
-	public String getName(){
+	public String getName() {
 		return name;
 	}
 
-	public int getPosition(){
+	public int getPosition() {
 		return position;
 	}
 }
