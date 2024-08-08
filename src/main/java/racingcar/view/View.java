@@ -18,4 +18,13 @@ public class View {
 		} while (validator.isEmpty(input) || validator.isOneRacingCar(input));
 		return util.commaSplit(input);
 	}
+
+	public int getTrialCount(){
+		String input = "";
+		do{
+			System.out.println(Message.INPUT_TRIAL_COUNT);
+			input = Console.readLine();
+		} while (validator.isEmpty(input) || !validator.isNumber(input) || !validator.isOverZero(input));
+		return Integer.parseInt(input);
+	}
 }
