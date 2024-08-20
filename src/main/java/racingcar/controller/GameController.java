@@ -1,5 +1,6 @@
 package racingcar.controller;
 
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -33,26 +34,32 @@ public class GameController {
 			}
 			System.out.println();
 		}
+		this.showResult();
 	}
 
-	// public void showResult() {
-	//
-	//
-	// }
-	//
-	// private List<String> getWinner() {
-	// 	int max = 0;
-	// 	for (Car car : racingCarList) {
-	// 		if (max < car.getPosition()) {
-	// 			max = car.getPosition();
-	// 		}
-	// 	}
-	//
-	// 	for (Car car : racingCarList) {
-	// 		if(car.getPosition() == max){
-	//
-	// 		}
-	// 	}
-	// }
+	public void showResult() {
+		view.printWinner(getWinner());
+	}
+
+	private List<String> getWinner() {
+		ArrayList<String> winnerList = new ArrayList<>();
+		int max = findMax();
+		for (Car car : racingCarList) {
+			if(car.getPosition() == max){
+				winnerList.add(car.getName());
+			}
+		}
+		return winnerList;
+	}
+
+	private int findMax() {
+		int max = 0;
+		for (Car car : racingCarList) {
+			if (max < car.getPosition()) {
+				max = car.getPosition();
+			}
+		}
+		return max;
+	}
 
 }

@@ -27,4 +27,11 @@ public class View {
 		} while (validator.isEmpty(input) || !validator.isNumber(input) || !validator.isOverZero(input));
 		return Integer.parseInt(input);
 	}
+
+	public void printWinner(List<String> winnerList) {
+		StringBuilder stringBuilder = new StringBuilder();
+		stringBuilder.append("최종 우승자 : ");
+		stringBuilder.append(String.join(", ", winnerList));
+		System.out.println(stringBuilder);
+	}
 }
